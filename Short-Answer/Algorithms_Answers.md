@@ -19,4 +19,6 @@ c) O(1) Run time is not affected by the size of the input.
 4. Drop egg.
 5. If egg breaks, current floor equals top
 6. Repeat steps 1 - 5.  
+7. If egg does not break, current floor equals bottom.
+8. Repeate steps 1 - 5.
 

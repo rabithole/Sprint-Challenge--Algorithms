@@ -93,11 +93,10 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        self.item = self._list
+
+
+
 
 
 if __name__ == "__main__":
@@ -110,3 +109,6 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+    # choose the pivot
+    # 

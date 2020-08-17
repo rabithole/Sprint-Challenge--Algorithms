@@ -113,12 +113,18 @@ class SortingRobot:
 
 
         print('List start', self._list)
-        self._item = l[0]
+        self._item = self._list[0]
+        # print(len(self._list))
         while True:
-            if self.compare_item() == 0:
+            if self._position == len(self._list)-1:
+                print('End of list')
+                
+                print('Item', self._item, 'Position', self._position)
+
+            elif self.compare_item() == 0:
                 self.move_right()
 
-                # print('0 if: ', self._item)
+                print('0 if: ', self._item, self._position, len(self._list)-1)
 
             elif self.compare_item() == -1: # less:
 
@@ -126,7 +132,7 @@ class SortingRobot:
 
                 if self.can_move_right() == True:
 
-                    # print('Move right')
+                    print('Move right')
 
                     self.move_right()
 
@@ -144,12 +150,6 @@ class SortingRobot:
 
                 print('')
                 print('List', self._list)
-                print('Held item', self._item, self._position)
-                # return print('Returned List', self._list)
-            elif self._position == len(self._list) -1:
-                print('End of list')
-                self._item += 1
-                print(self._list)
 
             else:
                 return

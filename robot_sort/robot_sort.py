@@ -1,3 +1,4 @@
+import pdb
 class SortingRobot:
     def __init__(self, l):
         """
@@ -93,10 +94,65 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        self.item = self._list
+        # compare 
+        # if item holding is less...
+            # move right
+        # if item holding is greater...
+            # swap item
+            # move right
+        # if self._position == len(l)-1
+            # self._item += 1
 
 
+        # self._item = self._list[0]
+        # self.move_right()
+        # self.swap_item()
+        # self._list[0] = self._item
+        # print(self._list)
+        # print(self._item)
 
+
+        print('List start', self._list)
+        self._item = l[0]
+        while True:
+            if self.compare_item() == 0:
+                self.move_right()
+
+                # print('0 if: ', self._item)
+
+            elif self.compare_item() == -1: # less:
+
+                # print('Held item', self._item, 'Position', self._position)
+
+                if self.can_move_right() == True:
+
+                    # print('Move right')
+
+                    self.move_right()
+
+                    # print('item', self._item)
+
+            elif self.compare_item() == 1: # Greater:
+                # pdb.set_trace()
+                print('2 if, current item held', self._item)
+
+                self.swap_item()
+                self._list[self._item] = self._item
+                print('Item held', self._item)
+
+                self.move_right()
+
+                print('')
+                print('List', self._list)
+                print('Held item', self._item, self._position)
+                # return print('Returned List', self._list)
+            elif self._position == len(self._list) -1:
+                print('End of list')
+                self._item += 1
+                print(self._list)
+
+            else:
+                return
 
 
 if __name__ == "__main__":
@@ -108,7 +164,12 @@ if __name__ == "__main__":
     robot = SortingRobot(l)
 
     robot.sort()
-    print(robot._list)
+    
+    print('Item', robot._item)
+
+    print('')
+    # print(robot._list)
 
     # choose the pivot
+    # compare_item
     # 

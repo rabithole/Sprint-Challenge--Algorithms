@@ -96,13 +96,13 @@ class SortingRobot:
     def sort(self):
         if self.compare_item() == None:
             print(self._list)
-            print(self._item)
+            print('item', self._item)
             self.swap_item()
-            print(self._item)
+            print('item', self._item)
             self.move_right()
-            if self.light_is_on() == True:
-                # print('Final list', self._list)
-                return 
+            # if self.light_is_on() == True:
+            #     # print('Final list', self._list)
+            #     return 
             # print(self._position)
             self.moving_right()
 
@@ -137,7 +137,7 @@ class SortingRobot:
             elif self.compare_item() == None:
                 self.swap_item()
                 # print('Left list', self._list)
-        return self.set_light_on(), self.swap_item(), self.sort()
+        return self.swap_item(), self.sort()
 
 
 

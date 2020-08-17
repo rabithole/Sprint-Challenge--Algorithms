@@ -94,65 +94,54 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        # compare 
-        # if item holding is less...
-            # move right
-        # if item holding is greater...
-            # swap item
-            # move right
-        # if self._position == len(l)-1
-            # self._item += 1
+        if self.compare_item() == None:
+            print(self._list)
+            print(self._item)
+            self.swap_item()
+            print(self._item)
+            self.move_right()
+            if self.light_is_on() == True:
+                # print('Final list', self._list)
+                return 
+            # print(self._position)
+            self.moving_right()
 
-
-        # self._item = self._list[0]
-        # self.move_right()
-        # self.swap_item()
-        # self._list[0] = self._item
-        # print(self._list)
-        # print(self._item)
-
-
-        print('List start', self._list)
-        self._item = self._list[0]
-        # print(len(self._list))
-        while True:
-            if self._position == len(self._list)-1:
-                print('End of list')
-                
-                print('Item', self._item, 'Position', self._position)
-
-            elif self.compare_item() == 0:
-                self.move_right()
-
-                print('0 if: ', self._item, self._position, len(self._list)-1)
-
-            elif self.compare_item() == -1: # less:
-
-                # print('Held item', self._item, 'Position', self._position)
-
-                if self.can_move_right() == True:
-
-                    print('Move right')
-
-                    self.move_right()
-
-                    # print('item', self._item)
-
-            elif self.compare_item() == 1: # Greater:
-                # pdb.set_trace()
-                print('2 if, current item held', self._item)
-
+    def moving_right(self):
+        print('moving right')
+        while self.can_move_right() == True:
+            if self.compare_item() == -1 or self.compare_item() == 0:
+                # print('Before', self._item)
                 self.swap_item()
-                self._list[self._item] = self._item
-                print('Item held', self._item)
-
+                # print('After', self._item)
                 self.move_right()
+                # print('Item', self._item)
+            elif self.compare_item() == 1:
+                # print('greater')
+                self.move_right()
+                # print(self._position)
+            # else:
+                # print('Right list', self._list)
+        return self.moving_left()
 
-                print('')
-                print('List', self._list)
+    def moving_left(self):
+        # print('Left begin', self._list)
+        while self.can_move_left() == True:
+            # print(self._position)
+            if self.compare_item() == -1:
+                self.move_left()
+            elif self.compare_item() == 1:
+                # print('Before swap', self._item)
+                self.swap_item()
+                # print('Item', self._item)
+                self.move_left()
+            elif self.compare_item() == None:
+                self.swap_item()
+                # print('Left list', self._list)
+        return self.set_light_on(), self.swap_item(), self.sort()
 
-            else:
-                return
+
+
+       
 
 
 if __name__ == "__main__":
@@ -165,11 +154,50 @@ if __name__ == "__main__":
 
     robot.sort()
     
-    print('Item', robot._item)
+    # print('Item', robot._item)
 
     print('')
     # print(robot._list)
 
-    # choose the pivot
-    # compare_item
-    # 
+#### This solution violates the do not directly access self._anything rule. 
+ # print('List start', self._list)
+ #        self._item = self._list[0]
+ #        # print(len(self._list))
+ #        while True:
+ #            if self._position == len(self._list)-1:
+ #                print('End of list')
+                
+ #                print('Item', self._item, 'Position', self._position)
+
+ #            elif self.compare_item() == 0:
+ #                self.move_right()
+
+ #                print('0 if: ', self._item, self._position, len(self._list)-1)
+
+ #            elif self.compare_item() == -1: # less:
+
+ #                # print('Held item', self._item, 'Position', self._position)
+
+ #                if self.can_move_right() == True:
+
+ #                    print('Move right')
+
+ #                    self.move_right()
+
+ #                    # print('item', self._item)
+
+ #            elif self.compare_item() == 1: # Greater:
+ #                # pdb.set_trace()
+ #                print('2 if, current item held', self._item)
+
+ #                self.swap_item()
+ #                self._list[self._item] = self._item
+ #                print('Item held', self._item)
+
+ #                self.move_right()
+
+ #                print('')
+ #                print('List', self._list)
+
+ #            else:
+ #                return 

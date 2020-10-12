@@ -3,8 +3,8 @@
 ## Exercise I
 
 a)
-O(log n) 
-The amount of operations is dependant the size of the input, but the run time and space complexity decreases as the size of the input increases. The size of the input in this case is only numeric. Calculations of this sort barely affect run time complexity.  
+O(n) 
+The number of operations increases proprortionally to the input
 
 b)
 O(n^2)
